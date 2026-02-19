@@ -1,6 +1,7 @@
 import './App.css'
 import { useState } from 'react'
 
+
 function TodoItem({todo, toggleDone, deleteTodo, addNewComment}) {
 
     const [newComment, setNewComment] = useState(""); 
@@ -8,7 +9,7 @@ function TodoItem({todo, toggleDone, deleteTodo, addNewComment}) {
         <li>
             <span className={todo.done ? "done" : ""}>{todo.title}</span>
             <button onClick={() => {toggleDone(todo.id)}}>Toggle</button>
-            <button onClick={() => {deleteTodo(todo.id)}}>❌</button>
+            <button onClick={() => {deleteTodo(todo.id)}} aria-label="delete">❌</button>
             {(todo.comments) && (todo.comments.length > 0) && (
                 <>
                 <p>There are {todo.comments.length} comments.</p>

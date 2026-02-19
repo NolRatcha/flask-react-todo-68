@@ -48,4 +48,28 @@ describe('TodoItem', () => {
     expect(screen.getByText('Another comment')).toBeInTheDocument();
     expect(screen.getByText(/2/)).toBeInTheDocument();
     });
+
+    it('makes callback to toggleDone when Toggle button is clicked', () => {
+    const onToggleDone = vi.fn();
+    render(
+      <TodoItem 
+       todo={baseTodo} 
+       toggleDone={onToggleDone} />
+    );
+    const button = screen.getByRole('button', { name: /toggle/i });
+    button.click();
+    expect(onToggleDone).toHaveBeenCalledWith(baseTodo.id);
+    });
+
+    it('makes callback to deleteTodo when delete button is clicked', () => {
+    const onDeleteTodo = vi.fn();
+    render(
+      <TodoItem 
+       todo={baseTodo} 
+       deleteTodo={onDeleteTodo} />
+    );
+    const button = screen.getByRole('button', { name: /delete/i });
+    button.click();
+    expect(onDeleteTodo).toHaveBeenCalledWith(baseTodo.id);
+    });
 });
