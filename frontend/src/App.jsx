@@ -28,6 +28,22 @@ function App() {
               <LoginForm loginUrl={TODOLIST_LOGIN_URL} />
             }
           />
+          <Route
+            path="/login"
+            element={
+              <LoginForm loginUrl={TODOLIST_LOGIN_URL} />
+            }
+          />
+          <Route 
+          path="/about" 
+          element={
+            <>
+              <h1>About</h1>
+              <p>This is a simple todo list application built with React and Flask.</p>
+              <a href="/">Back to Home</a>
+            </>
+          } 
+          />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
